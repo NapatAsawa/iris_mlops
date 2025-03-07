@@ -14,4 +14,7 @@ deployments:
       cpu: 100
       memory: 100
       replicas: 1
+    publicAccess:
+      enabled: true
+      urlPrefix: iris-api-80e3c2b
 
