@@ -7,9 +7,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  test_iris_api:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -19,3 +18,8 @@ jobs:
 
       - name: Verify uv installation
         run: uv --version
+      
+      - name: Install uv iris api env
+        run: |
+          cd iris_api
+          uv run pytest test.py
