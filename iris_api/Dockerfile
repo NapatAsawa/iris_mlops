@@ -31,7 +31,8 @@ FROM python:3.10-slim-bookworm
 COPY --from=builder --chown=app:app /app /app
 
 # Place executables in the environment at the front of the path
+WORKDIR /app
 ENV PATH="/app/.venv/bin:$PATH"
 
 # Run the FastAPI application by default
-CMD ["fastapi", "run", "app/main.py", "--port", "80", "--host", "0.0.0.0"]
+CMD ["fastapi", "run", "main.py", "--port", "80", "--host", "0.0.0.0"]
