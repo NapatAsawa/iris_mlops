@@ -200,7 +200,6 @@ trust_policy.json
 
 .TODOS
 ca.cert
-*.pkl
 **/state
 **/setup_credentials.sh
 *.csv

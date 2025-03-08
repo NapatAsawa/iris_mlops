@@ -9,3 +9,6 @@ fastapp-run:
 
 train-model:
 	uv run python train.py
+
+unit-test-run:
+	uv run pytest test.py
