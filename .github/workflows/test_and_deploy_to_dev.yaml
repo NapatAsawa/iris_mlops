@@ -16,10 +16,26 @@ jobs:
       - name: Install uv
         run: curl -LsSf https://astral.sh/uv/install.sh | sh
 
-      - name: Verify uv installation
-        run: uv --version
+      - name: Install Environmet
+        run: |
+          cd iris_api
+          uv sync
       
-      - name: Install uv iris api env
+      - name: unit test
         run: |
           cd iris_api
           uv run pytest test.py
+  
+  deploy_quix_cloud_dev:
+      needs: test_iris_api
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - name: Quix sync
+          run: |
+            echo Installing Quix CLI
+            curl -fsSL https://github.com/quixio/quix-cli/raw/main/install.sh | bash
+            echo Logging into Quix Cloud
+            quix login ${{ secrets.QUIX_PAT }}
+            quix cloud env sync ${{ secrets.DEV_WORKSPACE_ID }}
+
