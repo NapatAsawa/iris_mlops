@@ -1,6 +1,45 @@
 # IRIS_MLOPS
+## **Serving API with Fastapi**
+
+### **Prerequisites**
+- Python 3.10
+- uv
+- Docker
+- Make
+
+### **Running Step**
+1. Change directory to iris_api
+```sh
+cd iris_api
+```
+2. Create Environment with uv
+```sh
+make install
+```
+3. Train iris model and save artifact
+```sh
+make install
+```
+4. Run fastapi app to serve the trained iris model
+- run in local uv environment
+```sh
+make local-run
+```
+- run in docker
+```sh
+make docker-run
+```
+5. Run unit test
+```sh
+make unit-test-run
+```
+
 ## **CI/CD Pipeline**
 ![CI/CD Workflow](./diagram/cicd_pipeline.drawio.png)
+### **Prerequisites**
+- Github
+- Quix cloud account
+- Setup Secret variable for github action (DEV_WORKSPACE_ID, PROD_WORKSPACE_ID, QUIX_PAT) 
 ### **Overview**
 This document describes the **Continuous Integration and Continuous Deployment (CI/CD)** workflow used to deploy applications to **Quix Cloud** environments (Dev & Prod). The workflow is triggered by push code to the dev branch and pull request merges to the main branch.
 #### **1. Development Workflow (`dev` branch)**

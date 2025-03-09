@@ -2,13 +2,14 @@ from fastapi import FastAPI
 import joblib
 import os
 from data_model import IrisBatchRequest
-
-model_path = "model/iris_model.pkl"
+from loguru import logger
+from config import MODEL_PATH
 
 # Load the model
-if not os.path.exists(model_path):
-    raise FileNotFoundError(f"Model file not found at {model_path}")
-model = joblib.load(model_path)
+if not os.path.exists(MODEL_PATH):
+    raise FileNotFoundError(f"Model file not found at {MODEL_PATH}")
+model = joblib.load(MODEL_PATH)
+logger.info("model loaded")
 app = FastAPI()
 
 @app.get("/healthcheck")

@@ -1,0 +1,1 @@
+MODEL_PATH = "model/iris_model.pkl"
