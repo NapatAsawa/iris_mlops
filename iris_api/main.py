@@ -4,6 +4,7 @@ import os
 from data_model import IrisBatchRequest
 from loguru import logger
 from config import MODEL_PATH
+from middleware import LoggingMiddleware
 
 # Load the model
 if not os.path.exists(MODEL_PATH):
@@ -11,6 +12,7 @@ if not os.path.exists(MODEL_PATH):
 model = joblib.load(MODEL_PATH)
 logger.info("model loaded")
 app = FastAPI()
+app.add_middleware(LoggingMiddleware)
 
 @app.get("/healthcheck")
 def healthcheck():
