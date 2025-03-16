@@ -6,6 +6,7 @@
 - uv
 - Docker
 - Make
+- Quix cloud account
 
 ### **Running Step**
 1. Change directory to iris_api
